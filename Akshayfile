@@ -27,6 +27,12 @@ pipeline {
         sh 'docker build -t akshaydivakaran/insuremeproject:1.0 .'
                     }
             }
- 
+ stage('Login to Dockerhub') {
+      steps {
+       withCredentials([usernamePassword(credentialsId: 'dockerlogin', passwordVariable: 'passvar', usernameVariable: 'uservar')]) {
+        sh 'docker login -u ${uservar} -p ${passvar}'
+                                                                    }
+                                }
+            }
     }
 }
