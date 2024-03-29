@@ -39,6 +39,7 @@ pipeline {
       steps {
         sh 'docker push akshaydivakaran/insuremeproject:1.0'
                                 }
+}
                    
     }
 }
