@@ -34,5 +34,10 @@ pipeline {
                                                                     }
                                 }
             }
+ stage('Push the Docker image') {
+      steps {
+        sh 'docker push akshaydivakaran/insuremeproject:1.0'
+                                }
+            }
     }
 }
