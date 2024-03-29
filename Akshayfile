@@ -34,6 +34,13 @@ stage('Push the Docker image') {
         sh 'docker push akshaydivakaran/insuremeproject:2.0'
                                 }
 }
+
+ stage('Ansbile config and Deployment') {
+      steps {
+       ansiblePlaybook credentialsId: 'user', disableHostKeyChecking: true, installation: 'ansible', inventory: '/etc/ansible/hosts', playbook: 'ansible.yml', vaultTmpPath: ''                   }
+            
+
+    }
             }
 
 
