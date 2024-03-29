@@ -25,7 +25,7 @@ stage('Create a Docker image from the Package Insure-Me.jar file') {
 stage('Login to Dockerhub') {
       steps {
       withCredentials([usernamePassword(credentialsId: '34673fe5-6557-4a79-911b-48d8e7fa5f65', passwordVariable: 'passp', usernameVariable: 'useru')]) {
-    sh 'docker login -u ${useru} ${passp}'
+    sh 'docker login -u ${useru} -p ${passp}'
 }   
                                                                     }
                                 }
