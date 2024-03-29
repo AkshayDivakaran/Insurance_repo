@@ -29,8 +29,9 @@ pipeline {
             }
  stage('Login to Dockerhub') {
       steps {
-       withCredentials([usernamePassword(credentialsId: 'dockerlogin', passwordVariable: 'passvar', usernameVariable: 'uservar')]) {
-        sh 'docker login -u ${uservar} -p ${passvar}'
+      withCredentials([usernamePassword(credentialsId: '34673fe5-6557-4a79-911b-48d8e7fa5f65', passwordVariable: 'passp', usernameVariable: 'useru')]) {
+    sh 'docker login -u ${useru} ${passp}'
+}   
                                                                     }
                                 }
             }
@@ -38,11 +39,6 @@ pipeline {
       steps {
         sh 'docker push akshaydivakaran/insuremeproject:1.0'
                                 }
-            }
- stage('Ansbile config and Deployment') {
-      steps {
-        ansiblePlaybook credentialsId: 'ansible-ssh', disableHostKeyChecking: true, installation: 'ansible', inventory: '/etc/ansible/hosts', playbook: 'ansible.yml', vaultTmpPath: ''
-                               }
-            }                     
+                   
     }
 }
